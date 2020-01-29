@@ -22,3 +22,33 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+
+curr_date = datetime.now()
+clndr = calendar.TextCalendar()
+arg = sys.argv
+
+
+def numCheck(arg):
+    if arg.isdigit():
+        return int(arg)
+    else:
+        return False
+
+
+if (len(arg) == False):
+    print('Looking for input in thr form of: "year(optional), month')
+    exit()
+
+
+mnth = len(arg) > 1 and numCheck(arg[1]) or curr_date.month
+year = len(arg) > 2 and numCheck(arg[2]) or curr_date.year
+
+# No Args
+clndr.prmonth(year, mnth)
+
+# One arg (Month)
+clndr.prmonth(year, 7)
+
+# Two Args
+clndr.prmonth(2020, 9)
